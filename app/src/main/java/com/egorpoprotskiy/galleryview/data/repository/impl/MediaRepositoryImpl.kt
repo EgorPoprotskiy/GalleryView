@@ -9,12 +9,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 //3. Класс должен реализовывать (:) MediaRepository
-class MediaRepositoryImpl(
+class MediaRepositoryImpl( // Это реализация MediaRepository, которая отвечает на вопрос "как это будет сделано"
     private val context: Context
 ): MediaRepository { // Реализуем наш контракт
     override suspend fun getAllMedia(): List<MediaItem> = withContext(Dispatchers.IO){ // 👈 Переключаемся на IO поток
         val mediaList = mutableListOf<MediaItem>()
-        // Здесь будет логика ContentResolver
+        // Логика ContentResolver
         val collectionUri: Uri = MediaStore.Files.getContentUri("external")
         val projection = arrayOf(
             MediaStore.Files.FileColumns._ID,           // ID файла
@@ -32,11 +32,11 @@ class MediaRepositoryImpl(
         val sortOrder = "${MediaStore.Files.FileColumns.DATE_ADDED} DESC"
         // в) Выполнение запроса и безопасное закрытие курсора
         context.contentResolver.query(
-            collectionUri,
-            projection,
-            selection,
-            selectionArgs,
-            sortOrder
+            collectionUri,  //Куда мы обращаемся? (К MediaStore).
+            projection,     //Какие столбцы нам нужны? (_ID, DISPLAY_NAME, MIME_TYPE).
+            selection,      //Условие WHERE? (Где тип файла = Изображение ИЛИ Видео).
+            selectionArgs,  //Значения для условия.
+            sortOrder       //Порядок сортировки (DESC по DATE_ADDED).
         )?.use { cursor ->
             //а) Получение индекса столбцов.
             val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns._ID)

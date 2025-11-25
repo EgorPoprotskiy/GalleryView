@@ -1,6 +1,5 @@
-package com.egorpoprotskiy.galleryview.ui.theme
+package com.egorpoprotskiy.galleryview.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
