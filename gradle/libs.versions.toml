@@ -22,6 +22,8 @@ composeBom = "2025.08.00"
 coil = "2.6.0"
 #ViewModel и Coroutines (корутины для ViewModel)
 viewmodelKtx = "2.8.0"
+#Чтобы использовать collectAsStateWithLifecycle()
+lifecycle-runtime-compose = "2.8.0"
 #Навигация Compose
 navigationCompose = "2.9.4"
 
@@ -44,9 +46,11 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 #просмотр изображений.
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
 # Добавь ViewModel
-androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "viewmodelKtx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodelKtx" }
+#Чтобы использовать collectAsStateWithLifecycle()
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle-runtime-compose"}
 # Добавь Navigation
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

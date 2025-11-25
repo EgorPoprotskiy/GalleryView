@@ -61,6 +61,9 @@ dependencies {
     implementation(libs.coil.compose)
     //Для ViewModelScope (корутины в ViewModel)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+
     //Добавь Navigation
     implementation(libs.androidx.navigation.compose)
+
 }
