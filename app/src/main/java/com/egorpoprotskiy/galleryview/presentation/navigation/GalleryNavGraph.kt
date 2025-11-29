@@ -7,6 +7,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.egorpoprotskiy.galleryview.presentation.screen.DetailScreen
 import com.egorpoprotskiy.galleryview.presentation.screen.GalleryScreen
 import com.egorpoprotskiy.galleryview.presentation.viewmodel.GalleryViewModel
 
@@ -38,8 +39,14 @@ fun GalleryNavGraph(
                         type = NavType.LongType
                     }
                 )
-            ) {
-                Text("Детали медиафайла")
+            ) { backStackEntry ->
+                //Извлекаем ID: используем константу ключа и метод getLong()
+                val mediaId = backStackEntry.arguments?.getLong(Screen.Details.MEDIA_ID_KEY) ?: 0L
+                //Вызываем DetailScreen, передавая извлеченный ID и ViewModel
+                DetailScreen(
+                    mediaId = mediaId,
+                    viewModel = viewModel
+                )
             }
     }
 }
