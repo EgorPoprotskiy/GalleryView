@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -113,7 +114,8 @@ fun GalleryApp(viewModel: GalleryViewModel, context: Context) {
 //        )
         GalleryNavGraph(
             navController = navController,
-            viewModel = viewModel
+            viewModel = viewModel,
+            Modifier.systemBarsPadding() //экраны вне статус бара
         )
     } else {
         // Если разрешений нет, показываем заглушку
