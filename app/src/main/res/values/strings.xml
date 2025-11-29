@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GalleryView</string>
+    <string name="back_button">Back</string>
+    <string name="detail_screen">экран деталей</string>
 </resources>

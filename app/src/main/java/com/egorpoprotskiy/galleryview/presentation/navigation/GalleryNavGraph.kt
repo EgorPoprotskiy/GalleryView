@@ -48,7 +48,8 @@ fun GalleryNavGraph(
             //Вызываем DetailScreen, передавая извлеченный ID и ViewModel
             DetailScreen(
                 mediaId = mediaId,
-                viewModel = viewModel
+                viewModel = viewModel,
+                navigateBack = {navController.navigateUp()}
             )
         }
     }
