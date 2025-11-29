@@ -21,10 +21,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
 import com.egorpoprotskiy.galleryview.data.repository.impl.MediaRepositoryImpl
 import com.egorpoprotskiy.galleryview.domain.repository.MediaRepository
+import com.egorpoprotskiy.galleryview.presentation.navigation.GalleryNavGraph
 import com.egorpoprotskiy.galleryview.presentation.screen.GalleryScreen
 import com.egorpoprotskiy.galleryview.presentation.ui.theme.GalleryViewTheme
 import com.egorpoprotskiy.galleryview.presentation.viewmodel.GalleryViewModel
@@ -58,7 +61,7 @@ class MainActivity : ComponentActivity() {
 class GalleryViewModelFactory(
     private val repository: MediaRepository
 ): ViewModelProvider.Factory {
-    override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         // Проверяем, что это наш ViewModel, и создаем его.
         if (modelClass.isAssignableFrom(GalleryViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
@@ -70,6 +73,7 @@ class GalleryViewModelFactory(
 
 @Composable
 fun GalleryApp(viewModel: GalleryViewModel, context: Context) {
+    val navController = rememberNavController() // создание navController
     // 1. Состояние, которое отслеживает, предоставлены ли разрешения
     var permissionsGranted by rememberSaveable { mutableStateOf(false) }
     // 2. Список разрешений, зависящий от версии Android
@@ -103,9 +107,13 @@ fun GalleryApp(viewModel: GalleryViewModel, context: Context) {
     // 5. Условное отображение UI
     if (permissionsGranted) {
         // Если разрешения есть, показываем Галерею
-        GalleryScreen(
-            viewModel = viewModel,
-            modifier = Modifier.fillMaxSize()
+//        GalleryScreen(
+//            viewModel = viewModel,
+//            modifier = Modifier.fillMaxSize()
+//        )
+        GalleryNavGraph(
+            navController = navController,
+            viewModel = viewModel
         )
     } else {
         // Если разрешений нет, показываем заглушку

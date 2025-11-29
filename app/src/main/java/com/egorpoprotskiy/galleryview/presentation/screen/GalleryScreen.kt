@@ -1,5 +1,6 @@
 package com.egorpoprotskiy.galleryview.presentation.screen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -17,7 +18,8 @@ import com.egorpoprotskiy.galleryview.presentation.viewmodel.GalleryViewModel
 fun GalleryScreen(
     modifier: Modifier = Modifier,
     viewModel: GalleryViewModel,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues(0.dp),
+    onMediaClick: (Long) -> Unit
 ) {
     //считывает состояние mediaList с помощью collectAsState()
     val mediaList by viewModel.mediaList.collectAsStateWithLifecycle()
@@ -33,7 +35,12 @@ fun GalleryScreen(
             key = {item -> item.id}
         ) { mediaItem ->
             MediaGridItem(
-                mediaItem = mediaItem
+                mediaItem = mediaItem,
+                // Вызываем переданную лямбду, когда происходит клик.
+                // Передаем ID текущего элемента.
+                modifier = Modifier.clickable {
+                    onMediaClick(mediaItem.id)
+                }
             )
         }
     }

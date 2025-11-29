@@ -21,6 +21,7 @@ import com.egorpoprotskiy.galleryview.domain.model.MediaItem
 import androidx.compose.ui.graphics.Color
 import coil.decode.VideoFrameDecoder
 import coil.request.ImageRequest
+import com.egorpoprotskiy.galleryview.presentation.navigation.Screen
 
 //5. Создание одной карточки(фото)
 @Composable
