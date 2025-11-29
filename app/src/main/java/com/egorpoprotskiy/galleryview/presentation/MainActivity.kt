@@ -29,6 +29,8 @@ import com.egorpoprotskiy.galleryview.presentation.screen.GalleryScreen
 import com.egorpoprotskiy.galleryview.presentation.ui.theme.GalleryViewTheme
 import com.egorpoprotskiy.galleryview.presentation.viewmodel.GalleryViewModel
 
+
+//7.
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

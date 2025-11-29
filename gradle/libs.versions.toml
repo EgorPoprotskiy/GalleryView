@@ -18,7 +18,7 @@ activityCompose = "1.11.0"
 #Compose Bill of Materials (BOM). Управление версиями Compose. BOM гарантирует, что все модули Jetpack Compose (например, material, ui, foundation) используют совместимые версии.
 composeBom = "2025.08.00"
 
-#просмотр изображений.
+#просмотр изображений и видео.
 coil = "2.6.0"
 #ViewModel и Coroutines (корутины для ViewModel)
 viewmodelKtx = "2.8.0"
@@ -45,6 +45,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 
 #просмотр изображений.
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
+coil-video = { group = "io.coil-kt", name = "coil-video", version.ref = "coil" }
 # Добавь ViewModel
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodelKtx" }
 #Чтобы использовать collectAsStateWithLifecycle()
